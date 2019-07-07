@@ -1,2 +1,2 @@
 # SoundAnalyzer
-Python web application for analuzing sound
+Python web application for analyzing sound
