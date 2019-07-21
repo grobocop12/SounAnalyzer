@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Analyzer</title>
-    {% load staticfiles  %}
-    <script src="{%  static 'js/jquery-3.4.1.js' %}"></script>
-	<script src="{% static 'js/plotly-latest.min.js'%}"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
-     
-</head>
-<body>
-{% if sample_rate %}
-    <p>{{ sample_rate }}</p>
-{% endif %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Analyzer</title>
+        {% load staticfiles  %}
+        <script src="{%  static 'js/jquery-3.4.1.js' %}"></script>
+        <script src="{% static 'js/plotly-latest.min.js'%}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
 
-<div id="myChart" style="width:auto;height:200%;" ></div>
-<script>
-    TESTER = document.getElementById('myChart');
-	Plotly.plot(TESTER, [{
-	x: {{x_values}},
-	y: {{y_values}} }],{
-	margin: {t:0}});
+    </head>
+    <header>
+        <h1>OSA</h1>
+        <h2>Online Sound Analyzer</h2>
+    </header>
+    <body>
 
-</script>
+        <div id="soundWave"></div>
+        <div id="spectogram"></div>
+
+        <script>
+            soundWave = document.getElementById('soundWave');
+            Plotly.plot(soundWave,
+                [{  x: {{x_values}} ,
+                    y: {{y_values}} }],
+                {
+                    title:'Sound wave',
+                    responsive:true,
+                    height: 600
+                }
+                ,);
+
+            spectogram = document.getElementById('spectogram');
+        </script>
+
 </body>
 </html>

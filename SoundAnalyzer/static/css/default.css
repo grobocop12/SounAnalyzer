@@ -1,12 +1,12 @@
 body{
-    background-color: lightcyan;
+    background-color: lightgray;
     horiz-align: center;
     vertical-align: center;
 }
 
 div{
     text-align: center;
-    background-color: aliceblue;
+
 }
 
 header {
@@ -15,6 +15,9 @@ header {
     font-size: large;
 }
 
-form{
-
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
 }

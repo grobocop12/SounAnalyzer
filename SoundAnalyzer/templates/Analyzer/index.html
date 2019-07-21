@@ -7,17 +7,31 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
     </head>
     <body>
+
         <header>
             <h1>OSA</h1>
             <h2>Online Sound Analyzer</h2>
         </header>
+
+
+        <form class="box" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="box__input">
+                <input class="box__file" type="file" name="audioFile" id="file" accept="audio/wav"/>
+                <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+                <button class="box__button" type="submit">Upload</button>
+            </div>
+        </form>
+
+<!--
         <div>
             <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
+
                 <input type="file" name="audioFile" accept="audio/wav">
                 <button type="submit">Upload</button>
             </form>
         </div>
+!-->
     </body>
 
 </html>
