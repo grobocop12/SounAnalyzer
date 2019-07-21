@@ -5,46 +5,22 @@
     <title>Analyzer</title>
     {% load staticfiles  %}
     <script src="{%  static 'js/jquery-3.4.1.js' %}"></script>
-    <script src="{%  static 'js/node_modules/chart.js/dist/Chart.js' %}"></script>
-    <script src="{% static 'js/node_modules/chart.js/dist/Chart.min.js' %}"></script>
-     <style>
-        html, body {
-          width: 50%;
-          height: 50%;
-          margin: 0px;
-          border: 0;
-
-
-        }
-     </style>
+	<script src="{% static 'js/plotly-latest.min.js'%}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+     
 </head>
 <body>
 {% if sample_rate %}
     <p>{{ sample_rate }}</p>
 {% endif %}
 
-<canvas id="myChart" width="100" height="100"></canvas>
+<div id="myChart" style="width:auto;height:200%;" ></div>
 <script>
-
-        var ctx = document.getElementById('myChart');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: [1, 2.3, 3, 4,],
-                datasets: [
-
-                    {
-                        label: 'data',
-                        data: [21, 37, 88,14],
-                        lineTension : 0
-                    },
-                ],
-                steppedLine:true,
-            },
-            options: {
-                bezierCurve: false
-            },
-        });
+    TESTER = document.getElementById('myChart');
+	Plotly.plot(TESTER, [{
+	x: {{x_values}},
+	y: {{y_values}} }],{
+	margin: {t:0}});
 
 </script>
 </body>

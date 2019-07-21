@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sound analyzer</title>
-</head>
-<body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="audioFile" accept="audio/wav">
-        <button type="submit">Upload</button>
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sound analyzer</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1>OSA</h1>
+            <h2>Online Sound Analyzer</h2>
+        </header>
+        <div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="audioFile" accept="audio/wav">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </body>
+
 </html>
