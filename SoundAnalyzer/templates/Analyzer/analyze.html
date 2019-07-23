@@ -20,17 +20,27 @@
 
         <script>
             soundWave = document.getElementById('soundWave');
-            Plotly.plot(soundWave,
-                [{  x: {{x_values}} ,
-                    y: {{y_values}} }],
+            let x = {{x_values}};
+            let y = {{y_values}};
+            let data = [{x:  x,
+                         y:  y}];
+
+            var SoundPlot = Plotly.newPlot(soundWave, data,
                 {
                     title:'Sound wave',
                     responsive:true,
                     height: 600
-                }
-                ,);
+                },);
 
-            spectogram = document.getElementById('spectogram');
+            soundWave.on('plotly_click', function
+                (data){
+                    var pts = '';
+                    for(var i=0; i < x.length; i++)
+                    {
+                        pts = 'x = '+ x[i] +'\ny = '+  y[i].toPrecision(4) + '\n\n';
+                    }
+                    alert('Closest point clicked:\n\n'+pts);
+            });
         </script>
 
 </body>

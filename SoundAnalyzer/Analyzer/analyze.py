@@ -9,7 +9,7 @@ def get_sample_rate(audio_file):
 
 
 def get_first_channel(audio_file):
-    downsampling = 10
+    downsampling = 11
     rate, data = wavfile.read(audio_file)
 
     time = calculate_time(len(data), rate)
