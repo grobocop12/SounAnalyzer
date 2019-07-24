@@ -13,6 +13,7 @@ def index(request):
 
 def analyze_file(request):
     audio_file = request.FILES.get('audioFile')
-    data, time = analyze.get_first_channel(audio_file)
+    data, time, spectrogram = analyze.analyze(audio_file)
+
     return render(request, 'Analyzer/analyze.html', {'x_values': json.dumps(time),
                                                      'y_values': json.dumps(data), })
